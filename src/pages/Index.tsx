@@ -1,23 +1,35 @@
 import { MainLayout } from '@/components/layout/MainLayout';
-import { HeroSection } from '@/components/modules/HeroSection';
+import { HeroSlider } from '@/components/modules/HeroSlider';
+import { AdvertisementSlider } from '@/components/modules/AdvertisementSlider';
 import { AnnouncementTicker } from '@/components/modules/AnnouncementTicker';
 import { QuickLinksGrid } from '@/components/modules/QuickLinksGrid';
 import { SchemeCards } from '@/components/modules/SchemeCards';
 import { UpcomingEvents } from '@/components/modules/UpcomingEvents';
 import { WeatherWidget } from '@/components/modules/WeatherWidget';
 import { EmergencyContacts } from '@/components/modules/EmergencyContacts';
+import { WhatsAppOptIn } from '@/components/modules/WhatsAppOptIn';
 
 const Index = () => {
   return (
     <MainLayout>
-      {/* Hero Section */}
-      <HeroSection />
+      {/* Hero Slider */}
+      <HeroSlider />
+
+      {/* WhatsApp Opt-in Banner */}
+      <WhatsAppOptIn />
 
       {/* Announcement Ticker */}
       <AnnouncementTicker />
 
       {/* Quick Links */}
       <QuickLinksGrid />
+
+      {/* Advertisement Slider */}
+      <section className="py-8 bg-muted/30">
+        <div className="container">
+          <AdvertisementSlider />
+        </div>
+      </section>
 
       {/* Schemes Section */}
       <SchemeCards />
