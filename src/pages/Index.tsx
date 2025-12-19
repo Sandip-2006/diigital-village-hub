@@ -1,7 +1,6 @@
 import { MainLayout } from '@/components/layout/MainLayout';
 import { HeroSlider } from '@/components/modules/HeroSlider';
 import { AdvertisementSlider } from '@/components/modules/AdvertisementSlider';
-import { GovtNoticeSlider } from '@/components/modules/GovtNoticeSlider';
 import { AnnouncementTicker } from '@/components/modules/AnnouncementTicker';
 import { QuickLinksGrid } from '@/components/modules/QuickLinksGrid';
 import { SchemeCards } from '@/components/modules/SchemeCards';
@@ -13,7 +12,7 @@ import { WhatsAppOptIn } from '@/components/modules/WhatsAppOptIn';
 const Index = () => {
   return (
     <MainLayout>
-      {/* Hero Slider (Festival + General) */}
+      {/* Hero Slider */}
       <HeroSlider />
 
       {/* WhatsApp Opt-in Banner */}
@@ -24,9 +23,6 @@ const Index = () => {
 
       {/* Quick Links */}
       <QuickLinksGrid />
-
-      {/* Government Notice Slider */}
-      <GovtNoticeSlider />
 
       {/* Advertisement Slider */}
       <section className="py-8 bg-muted/30">
