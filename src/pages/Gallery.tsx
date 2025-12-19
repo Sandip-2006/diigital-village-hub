@@ -20,17 +20,21 @@ const Gallery = () => {
     ? gallery 
     : gallery.filter(g => g.category === selectedCategory);
 
-  const categories = [
+const categories = [
     { key: 'all', label: { en: 'All', hi: 'सभी', gu: 'બધા' } },
+    { key: 'festival', label: { en: 'Festival', hi: 'त्योहार', gu: 'તહેવાર' } },
     { key: 'events', label: { en: 'Events', hi: 'आयोजन', gu: 'કાર્યક્રમો' } },
-    { key: 'development', label: { en: 'Development', hi: 'विकास', gu: 'વિકાસ' } },
     { key: 'culture', label: { en: 'Culture', hi: 'संस्कृति', gu: 'સંસ્કૃતિ' } },
+    { key: 'development', label: { en: 'Development', hi: 'विकास', gu: 'વિકાસ' } },
     { key: 'nature', label: { en: 'Nature', hi: 'प्रकृति', gu: 'પ્રકૃતિ' } },
     { key: 'celebrities', label: { en: 'Celebrities', hi: 'हस्तियाँ', gu: 'હસ્તીઓ' } },
   ];
 
   const getTitle = (item: GalleryItem) =>
     language === 'hi' ? item.titleHi : language === 'gu' ? item.titleGu : item.title;
+
+  const getDescription = (item: GalleryItem) =>
+    language === 'hi' ? item.descriptionHi : language === 'gu' ? item.descriptionGu : item.description;
 
   const openLightbox = (index: number) => {
     setCurrentImageIndex(index);
@@ -97,10 +101,19 @@ const Gallery = () => {
                   <h3 className="text-white font-medium text-sm mb-1">
                     {getTitle(item)}
                   </h3>
-                  <div className="flex items-center gap-2 text-white/70 text-xs">
+                  <div className="flex items-center gap-2 text-white/70 text-xs mb-2">
                     <Calendar className="h-3 w-3" />
                     {item.date}
                   </div>
+                  {item.tags && item.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-1">
+                      {item.tags.slice(0, 3).map((tag) => (
+                        <Badge key={tag} variant="secondary" className="text-[10px] px-1.5 py-0 bg-white/20 text-white border-0">
+                          #{tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </Card>
@@ -169,7 +182,10 @@ const Gallery = () => {
                   <h3 className="text-white text-xl font-semibold mb-2">
                     {getTitle(filteredGallery[currentImageIndex])}
                   </h3>
-                  <div className="flex items-center gap-4 text-white/70 text-sm">
+                  <p className="text-white/80 text-sm mb-3 line-clamp-2">
+                    {getDescription(filteredGallery[currentImageIndex])}
+                  </p>
+                  <div className="flex items-center gap-4 text-white/70 text-sm mb-3">
                     <span className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
                       {filteredGallery[currentImageIndex].date}
@@ -178,7 +194,16 @@ const Gallery = () => {
                       {filteredGallery[currentImageIndex].category}
                     </Badge>
                   </div>
-                  <div className="mt-4">
+                  {filteredGallery[currentImageIndex].tags && (
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {filteredGallery[currentImageIndex].tags.map((tag) => (
+                        <Badge key={tag} variant="outline" className="text-xs text-white/70 border-white/30">
+                          #{tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
+                  <div>
                     <span className="text-white/50 text-sm">
                       {currentImageIndex + 1} / {filteredGallery.length}
                     </span>
