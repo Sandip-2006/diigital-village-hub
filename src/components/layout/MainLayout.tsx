@@ -3,6 +3,7 @@ import { useStore } from '@/store/useStore';
 import { getThemeById } from '@/lib/themes';
 import { Header } from './Header';
 import { Footer } from './Footer';
+import { VillageSelectionModal } from '@/components/modules/VillageSelectionModal';
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -25,6 +26,7 @@ export function MainLayout({ children }: MainLayoutProps) {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-hero">
+      <VillageSelectionModal />
       <Header />
       <main className="flex-1">
         {children}
