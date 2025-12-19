@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { Language } from '@/lib/i18n';
 import { ThemeId, getCurrentFestivalTheme } from '@/lib/themes';
-import { Village, villages } from '@/lib/villages';
+import { Village } from '@/lib/villages';
 import { UserRole } from '@/lib/mockData';
 
 interface PortalState {
@@ -17,6 +17,8 @@ interface PortalState {
   // Village
   selectedVillage: Village | null;
   setSelectedVillage: (village: Village | null) => void;
+  hasSelectedVillage: boolean;
+  setHasSelectedVillage: (selected: boolean) => void;
 
   // Live Visitors Counter (simulated)
   liveVisitors: number;
@@ -62,9 +64,11 @@ export const useStore = create<PortalState>()(
       theme: getCurrentFestivalTheme().id,
       setTheme: (theme) => set({ theme }),
 
-      // Village - default to first village
-      selectedVillage: villages[0],
-      setSelectedVillage: (village) => set({ selectedVillage: village }),
+      // Village - default to null until selected
+      selectedVillage: null,
+      setSelectedVillage: (village) => set({ selectedVillage: village, hasSelectedVillage: true }),
+      hasSelectedVillage: false,
+      setHasSelectedVillage: (selected) => set({ hasSelectedVillage: selected }),
 
       // Live Visitors
       liveVisitors: Math.floor(Math.random() * 50) + 100,
@@ -106,6 +110,7 @@ export const useStore = create<PortalState>()(
         language: state.language,
         theme: state.theme,
         selectedVillage: state.selectedVillage,
+        hasSelectedVillage: state.hasSelectedVillage,
         userRole: state.userRole,
         isAuthenticated: state.isAuthenticated,
         userName: state.userName,
