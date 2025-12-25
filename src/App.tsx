@@ -12,6 +12,7 @@ import Sarpanch from "./pages/Sarpanch";
 import GramSabha from "./pages/GramSabha";
 import Development from "./pages/Development";
 import Events from "./pages/Events";
+import EventDetail from "./pages/EventDetail";
 import Gallery from "./pages/Gallery";
 import Amenities from "./pages/Amenities";
 import Attractions from "./pages/Attractions";
@@ -22,6 +23,8 @@ import PRIASoft from "./pages/PRIASoft";
 import Profile from "./pages/Profile";
 import WhatsApp from "./pages/WhatsApp";
 import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +45,7 @@ const App = () => (
           <Route path="/gram-sabha" element={<GramSabha />} />
           <Route path="/development" element={<Development />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/events/:id" element={<EventDetail />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/amenities" element={<Amenities />} />
           <Route path="/attractions" element={<Attractions />} />
@@ -52,6 +56,8 @@ const App = () => (
           <Route path="/profile" element={<Profile />} />
           <Route path="/whatsapp" element={<WhatsApp />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

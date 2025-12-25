@@ -8,10 +8,14 @@ import { UpcomingEvents } from '@/components/modules/UpcomingEvents';
 import { WeatherWidget } from '@/components/modules/WeatherWidget';
 import { EmergencyContacts } from '@/components/modules/EmergencyContacts';
 import { WhatsAppOptIn } from '@/components/modules/WhatsAppOptIn';
+import { VillageSelectionModal } from '@/components/modules/VillageSelectionModal';
 
 const Index = () => {
   return (
     <MainLayout>
+      {/* Village Selection Modal - First Visit */}
+      <VillageSelectionModal />
+
       {/* Hero Slider */}
       <HeroSlider />
 
